@@ -52,6 +52,15 @@ const TodoMain = () => {
       progress: undefined,
     });
 
+  const currDate = new Date();
+  let day = currDate.getDate();
+  let month = currDate.getMonth() + 1;
+  let year = currDate.getFullYear();
+  let hour = currDate.getHours();
+  let minute = currDate.getMinutes();
+
+  const time = hour + ":" + minute + " " + day + "/" + month + "/" + year;
+
   return (
     <div className={cn("container")}>
       <ToastContainer />
@@ -71,6 +80,7 @@ const TodoMain = () => {
         <AddTodo
           style={showAdd ? { display: "block" } : { display: "none" }}
           setJobs={setJobs}
+          timer={time}
         />
         <div
           className={styles.body}
@@ -82,11 +92,15 @@ const TodoMain = () => {
                 <h1 className={styles.item__id}>{i + 1}</h1>
                 <div className={styles.content}>
                   <h1>{item.title}</h1>
-                  <p>
+                  <p className={styles.note}>
                     <span style={{ fontSize: 12, color: "gray" }}>
                       Note:&emsp;
                     </span>
                     {item.detail}
+                  </p>
+                  <p style={{ fontSize: 12, color: "gray" }}>
+                    Date:&emsp;
+                    {item.time}
                   </p>
                 </div>
                 <div className={styles.action}>
