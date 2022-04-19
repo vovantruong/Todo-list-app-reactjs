@@ -3,11 +3,17 @@ import cn from "classnames";
 import styles from "./AddTodo.module.sass";
 import { ToastContainer, toast } from "react-toastify";
 
-const AddTodo = ({ style, className, setJobs,timer }) => {
-  const [job, setJob] = useState({
-    title: "",
-    detail: "",
-    time: timer,
+const AddTodo = ({ style, className, setJobs, timer }) => {
+  const [job, setJob] = useState(() => {
+    const id = JSON.parse(localStorage.getItem("jobItem"));
+    const newID = id !== null ? (id.length !== 0 ? id[id.length - 1].id + 1 : 1) : 1;
+    const newJob = {
+      id: newID ,
+      title: "",
+      detail: "",
+      time: timer,
+    };
+    return newJob;
   });
 
   const titleRef = useRef();
@@ -27,9 +33,10 @@ const AddTodo = ({ style, className, setJobs,timer }) => {
       notify();
     }
     setJob({
+      id: job.id + 1,
       title: "",
       detail: "",
-      time: timer
+      time: timer,
     });
   };
 

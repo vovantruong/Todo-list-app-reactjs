@@ -11,6 +11,8 @@ import "react-toastify/dist/ReactToastify.css";
 const TodoMain = () => {
   const [showAdd, setShowAdd] = useState(false);
   const [showUpdate, setShowUpdate] = useState(false);
+  const [id, setID] = useState();
+  const [valueJob, setValueJob] = useState();
 
   const [jobs, setJobs] = useState(() => {
     const store = JSON.parse(localStorage.getItem("jobItem"));
@@ -33,11 +35,13 @@ const TodoMain = () => {
   };
 
   const handleUpdate = (index) => {
-    // const list = JSON.parse(localStorage.getItem("jobItem"));
-    // const newList = list.filter((job, i) => {
-    //   return i == index;
-    // });
-    // console.log(newList);
+    const list = JSON.parse(localStorage.getItem("jobItem"));
+    const newList = list.filter((job, i) => {
+      return i == index;
+    });
+    setValueJob(newList[0]);
+    setID(newList[0].id);
+    // setID(index);
   };
 
   //setting toastify
@@ -68,7 +72,10 @@ const TodoMain = () => {
         <div className={styles.header}>
           <h2 className={styles.title}>TODO</h2>
           <button
-            onClick={() => setShowAdd(!showAdd)}
+            onClick={() => {
+              setShowAdd(!showAdd);
+              setShowUpdate(false);
+            }}
             className={styles.icon__add}
           >
             <i
@@ -81,6 +88,14 @@ const TodoMain = () => {
           style={showAdd ? { display: "block" } : { display: "none" }}
           setJobs={setJobs}
           timer={time}
+        />
+        <UpdateTodo
+          style={showUpdate ? { display: "block" } : { display: "none" }}
+          setJobs={setJobs}
+          value={valueJob}
+          id={id}
+          timer={time}
+          jobs={jobs}
         />
         <div
           className={styles.body}
@@ -108,6 +123,7 @@ const TodoMain = () => {
                     onClick={() => {
                       handleUpdate(i);
                       setShowUpdate(true);
+                      setShowAdd(false);
                     }}
                     className={styles.edit}
                   >
