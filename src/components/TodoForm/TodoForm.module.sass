@@ -1,6 +1,6 @@
 @import ../../styles/helper
 
-.add
+.form
     width: 50%
     margin: 0 auto
     padding: 20px
@@ -10,19 +10,17 @@
     +m
         width: 100%
         margin-top: 30px
+    input
+        font-size: 15px
+        width: 100%
+        border-bottom: 2px solid $yodadark
+        padding: 5px
+        margin: 10px 0
+        &:focus
+            border-bottom: 2px solid $yodapink
 
-.input
-    font-size: 15px
-    width: 100%
-    border-bottom: 2px solid $yodadark
-    padding: 5px
-    margin: 10px 0 
-    &:focus
-        border-bottom: 2px solid $yodapink
-
-
-.btn__add
-    width: 100%
+.btn
+    width: 50%
     background: $yodapink
     color: $white
     padding: 10px 20px
