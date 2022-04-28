@@ -23,9 +23,9 @@
     border-radius: 50%
     box-shadow: 0 0 7px 3px rgba(0,0,0,0.1)
     +m
-        left: -20px
-        width: 40px
-        height: 40px
+        left: -25px
+        width: 50px
+        height: 50px
 
 .content
     padding-left: 10%
@@ -35,6 +35,9 @@
     +m
         width: 100%
         padding-right: 10%
+    h1
+        font-family: Tahoma
+        word-wrap: break-word
 
 .action
     display: flex
@@ -46,6 +49,8 @@
         font-size: 25px
         &:hover
             color: $yodadark
+            +m 
+                color: $white
         +m
             color: $white
             width: 35px !important
@@ -72,3 +77,4 @@
     width: 25px
     height: 35px
     border: 2px solid $yodapink
+

@@ -7,6 +7,8 @@
     border-radius: 15px
     box-shadow: 0 0 25px 10px rgba(0,0,0,0.1)
     height: auto
+    +m 
+        padding: 50px 35px  
 
 .header
     display: flex
@@ -17,6 +19,8 @@
     font-size: 30px
     color: $yodadark
     font-weight: bold
+    +m
+        font-size: 40px
 
 .icon__add
     display: flex
@@ -31,8 +35,10 @@
     i
         color: $white
         font-size: 18px
-    &:hover
+    &:hover, &:active
         background: $yodadark
+        +m
+            background: $yodapink
 
 .body
     position: relative
